@@ -50,26 +50,44 @@ public class task3 {
     public static void main(String[] args) {
         Stack<Integer> calc = new Stack<>();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Введите 1-e число:");
-        // int number_1 = sc.nextInt();
+
+        System.out.println("Введите число:");
         calc.add(sc.nextInt());
-        System.out.println("Введите знак :");
-        char sign = sc.next().charAt(0);
-        System.out.println("Введите 2-e число:");
-        // int number_2 = sc.nextInt();
-        // calc.add(number_2);
-        calc.add(sc.nextInt());
+
+        while (sc.nextLine() != "stop") {
+            
+            System.out.println("Введите знак :");
+            char sign = sc.next().charAt(0);
+            
+            System.out.println("Введите число:");
+            calc.add(sc.nextInt());
+            
+            System.out.println(calc);
+
+            
+
+            int res = 0;
+            if (sign == '~') calc.pop();
+            if (sign == '+') res = calc.get(calc.size()-2) + calc.get(calc.size()-1);
+            if (sign == '-') res = calc.get(calc.size()-2) - calc.get(calc.size()-1);
+            if (sign == '*') res = calc.get(calc.size()-2) * calc.get(calc.size()-1);
+            if (sign == '/') res = calc.get(calc.size()-2) / calc.get(calc.size()-1);
+            calc.add(res);
+
+            System.out.println(res);
+        }
+        // System.out.println("Введите 2-e число:");
+        // calc.add(sc.nextInt());
+
         sc.close();
-        int res = 0;
-        if (sign == '+') res = calc.get(calc.size()-2) + calc.get(calc.size()-1);
-        if (sign == '-') res = calc.get(calc.size()-2) - calc.get(calc.size()-1);
-        if (sign == '*') res = calc.get(calc.size()-2) * calc.get(calc.size()-1);
-        if (sign == '/') res = calc.get(calc.size()-2) / calc.get(calc.size()-1);
-        // if (sign == '-') res = number_1 - number_2;
-        // if (sign == '*') res = number_1 * number_2;
-        // if (sign == '/') res = number_1 / number_2;
-        // System.out.printf("%d %c %d = %d", number_1, sign, number_2, res);
-        System.out.println(res);
+
+        // int res = 0;
+        // if (sign == '+') res = calc.get(calc.size()-2) + calc.get(calc.size()-1);
+        // if (sign == '-') res = calc.get(calc.size()-2) - calc.get(calc.size()-1);
+        // if (sign == '*') res = calc.get(calc.size()-2) * calc.get(calc.size()-1);
+        // if (sign == '/') res = calc.get(calc.size()-2) / calc.get(calc.size()-1);
+
+        // System.out.println(res);
         System.out.println(calc);
     }
 }
