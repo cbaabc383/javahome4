@@ -55,39 +55,35 @@ public class task3 {
         calc.add(sc.nextInt());
 
         while (sc.nextLine() != "stop") {
-            
-            System.out.println("Введите знак :");
+
+            System.out.println("Введите знак +, -, *, /");
+            System.out.println("или знак отмены ~");
             char sign = sc.next().charAt(0);
-            
-            System.out.println("Введите число:");
-            calc.add(sc.nextInt());
-            
-            System.out.println(calc);
+            if (sign == '~') {
+                calc.pop();
+                calc.pop();
+                System.out.println(calc.get(calc.size() - 1));
+            } 
+            else {
+                System.out.println("Введите число:");
+                calc.add(sc.nextInt());
+                // System.out.println(calc);
+                int res = 0;
+                if (sign == '+')
+                    res = calc.get(calc.size() - 2) + calc.get(calc.size() - 1);
+                if (sign == '-')
+                    res = calc.get(calc.size() - 2) - calc.get(calc.size() - 1);
+                if (sign == '*')
+                    res = calc.get(calc.size() - 2) * calc.get(calc.size() - 1);
+                if (sign == '/')
+                    res = calc.get(calc.size() - 2) / calc.get(calc.size() - 1);
+                calc.add(res);
 
-            
-
-            int res = 0;
-            if (sign == '~') calc.pop();
-            if (sign == '+') res = calc.get(calc.size()-2) + calc.get(calc.size()-1);
-            if (sign == '-') res = calc.get(calc.size()-2) - calc.get(calc.size()-1);
-            if (sign == '*') res = calc.get(calc.size()-2) * calc.get(calc.size()-1);
-            if (sign == '/') res = calc.get(calc.size()-2) / calc.get(calc.size()-1);
-            calc.add(res);
-
-            System.out.println(res);
+                System.out.println(res);
+            }
         }
-        // System.out.println("Введите 2-e число:");
-        // calc.add(sc.nextInt());
-
         sc.close();
 
-        // int res = 0;
-        // if (sign == '+') res = calc.get(calc.size()-2) + calc.get(calc.size()-1);
-        // if (sign == '-') res = calc.get(calc.size()-2) - calc.get(calc.size()-1);
-        // if (sign == '*') res = calc.get(calc.size()-2) * calc.get(calc.size()-1);
-        // if (sign == '/') res = calc.get(calc.size()-2) / calc.get(calc.size()-1);
-
-        // System.out.println(res);
         System.out.println(calc);
     }
 }
